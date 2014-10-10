@@ -1,6 +1,7 @@
 package jobsite.account;
 
 import jobsite.model.Account;
+import org.jboss.logging.Logger;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,9 +11,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 
+
 @Repository
 @Transactional(readOnly = true)
 public class AccountRepository {
+    Logger LOG = Logger.getLogger(AccountRepository.class);
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -22,7 +25,11 @@ public class AccountRepository {
 
     @Transactional
     public Account save(Account account) {
-        account.setPassword(passwordEncoder.encode(account.getPassword()));
+        // Шифрование пароля
+        String password = account.getPassword();
+        String encodedPassword = passwordEncoder.encode(password);
+        LOG.info(password + " -> " + encodedPassword);
+        account.setPassword(encodedPassword);
         entityManager.persist(account);
         return account;
     }
