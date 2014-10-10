@@ -13,3 +13,10 @@ JobSite на основе Spring MVC 4
 ------------------
 * Run / Edit configurations... + Server Tomcat Local
 * Deployment: + artifact
+
+Настройка tomcat 
+----------------
+```xml
+  <role rolename="manager-gui"/>
+  <user username="admin" password="admin" roles="manager-gui"/>
+```
