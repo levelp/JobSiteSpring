@@ -276,7 +276,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-                    <warName>JobSite-1.0.0</warName>
+                    <warName>JobSite</warName>
                 </configuration>
             </plugin>
             <plugin>
