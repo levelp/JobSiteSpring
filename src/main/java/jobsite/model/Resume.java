@@ -1,19 +1,22 @@
-package model;
+package jobsite.model;
 
-import jobsite.model.Account;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.List;
 
 /**
  * Резюме
  */
 @SuppressWarnings("serial")
-@Entity
-@Table(name = "resume")
+//@Entity
+//@Table(name = "resume")
 public class Resume {
+    @Id
+    @GeneratedValue
+    private Long id;
+
     private List<String> citizenship, countOfLanguage, education, skills, employment;
+
     private String infAboutUser;
     private int salary;
     private String phone;

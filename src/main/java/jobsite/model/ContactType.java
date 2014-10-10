@@ -1,4 +1,4 @@
-package model;
+package jobsite.model;
 
 /**
  * Тип контакта
