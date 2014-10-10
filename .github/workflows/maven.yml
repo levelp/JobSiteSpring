@@ -1,0 +1,44 @@
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+      
+    - name: Test with Coverage
+      run: mvn -B verify org.jacoco:jacoco-maven-plugin:prepare-agent test org.jacoco:jacoco-maven-plugin:report
+      
+    - name: Verify Coverage
+      run: |
+        COVERAGE=$(grep -o '<tfoot>.*</tfoot>' target/site/jacoco/index.html | grep -o '[0-9][0-9]*%' | head -1 | grep -o '[0-9][0-9]*')
+        MIN_COVERAGE=25
+        if [ "$COVERAGE" -lt "$MIN_COVERAGE" ]; then
+          echo "Test coverage is below ${MIN_COVERAGE}%: $COVERAGE%"
+          exit 1
+        else
+          echo "Test coverage is >= ${MIN_COVERAGE}% ($COVERAGE%)"
+        fi
+      
+    - name: Publish Test Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-report
+        path: target/site/jacoco/
