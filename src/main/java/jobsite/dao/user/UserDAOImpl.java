@@ -1,6 +1,6 @@
 package jobsite.dao.user;
 
-import jobsite.account.Account;
+import jobsite.model.Account;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;

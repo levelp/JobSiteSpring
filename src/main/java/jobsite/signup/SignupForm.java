@@ -1,6 +1,6 @@
 package jobsite.signup;
 
-import jobsite.account.Account;
+import jobsite.model.Account;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 

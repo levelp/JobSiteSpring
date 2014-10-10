@@ -1,8 +1,8 @@
 package jobsite.signup;
 
-import jobsite.account.Account;
 import jobsite.account.AccountRepository;
 import jobsite.account.UserService;
+import jobsite.model.Account;
 import jobsite.support.web.MessageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

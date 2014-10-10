@@ -1,5 +1,6 @@
 package jobsite.account;
 
+import jobsite.model.Account;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

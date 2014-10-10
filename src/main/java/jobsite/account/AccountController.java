@@ -1,5 +1,6 @@
 package jobsite.account;
 
+import jobsite.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;

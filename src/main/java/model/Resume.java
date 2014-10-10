@@ -1,6 +1,6 @@
 package model;
 
-import jobsite.account.Account;
+import jobsite.model.Account;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

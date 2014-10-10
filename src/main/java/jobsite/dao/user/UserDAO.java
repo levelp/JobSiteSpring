@@ -1,6 +1,6 @@
 package jobsite.dao.user;
 
-import jobsite.account.Account;
+import jobsite.model.Account;
 
 import java.util.List;
 

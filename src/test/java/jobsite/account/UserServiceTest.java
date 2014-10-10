@@ -1,5 +1,6 @@
 package jobsite.account;
 
+import jobsite.model.Account;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

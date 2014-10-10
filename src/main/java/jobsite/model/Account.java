@@ -1,4 +1,4 @@
-package jobsite.account;
+package jobsite.model;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
