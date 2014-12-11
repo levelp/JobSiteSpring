@@ -2326,11 +2326,11 @@
     </table>
     <table name="account" schema="public" catalog="jobsite" type="TABLE">
       <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="email" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="user_email" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="password" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="role" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="account_pkey" columns="id"/>
-      <index name="uk_q0uja26qgu1atulenwup9rxyr" unique="true" columns="email"/>
+      <index name="uk_mgx7cx34ipxrv397buqohsl07" unique="true" columns="user_email"/>
     </table>
     <table name="hibernate_sequence" schema="public" catalog="jobsite" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
@@ -2357,6 +2357,13 @@
       <column name="sex" sqlType="varchar" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="user_pkey" columns="id"/>
       <index name="unique_email" unique="true" columns="email"/>
+    </table>
+    <table name="user2" schema="public" catalog="jobsite" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="age" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="surname" sqlType="varchar" precision="1024" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="user2_pkey" columns="id"/>
     </table>
     <table name="user_id" schema="public" catalog="jobsite" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>

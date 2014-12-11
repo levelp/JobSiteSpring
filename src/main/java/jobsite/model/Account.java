@@ -5,18 +5,18 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
-@Entity
-@Table(name = "account")
+@Entity // Будет храниться в базе данных
+@Table(name = "account") // Имя таблицы
 @NamedQuery(name = Account.FIND_BY_EMAIL, query = "select a from Account a where a.email = :email")
 public class Account implements java.io.Serializable {
 
     public static final String FIND_BY_EMAIL = "Account.findByEmail";
 
-    @Id
+    @Id // Первичный ключ
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, name = "user_email")
     private String email;
 
     @JsonIgnore

@@ -20,3 +20,7 @@ JobSite на основе Spring MVC 4
   <role rolename="manager-gui"/>
   <user username="admin" password="admin" roles="manager-gui"/>
 ```
+
+Hibernate
+---------
+http://habrahabr.ru/post/29694/ - XML для каждого класса
