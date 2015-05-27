@@ -5,10 +5,10 @@
         >
     <modelVersion>4.0.0</modelVersion>
     <groupId>levelp</groupId>
-    <artifactId>JobSite</artifactId>
+    <artifactId>JobSiteSpring</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>JobSite</name>
+    <name>Job Site Spring</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>

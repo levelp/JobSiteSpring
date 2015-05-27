@@ -13,8 +13,7 @@ hs_err_pid*
 
 # idea project
 .idea
+*.iml
+
 # compiled files
 target
-
-# Idea project
-*.iml
