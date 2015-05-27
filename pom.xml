@@ -8,7 +8,7 @@
     <artifactId>JobSite</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>Spring MVC Application</name>
+    <name>JobSite</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
