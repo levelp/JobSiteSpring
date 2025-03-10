@@ -1,4 +1,3 @@
-
 package jobsite.config;
 
 import javax.sql.DataSource;
