@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @SpringBootApplication
 @EntityScan(basePackages = "jobsite.domain")
 @EnableJpaRepositories(basePackages = "jobsite.repository")
+@EnableMongoRepositories(basePackages = "jobsite.repository.mongo")
 @ComponentScan(basePackages = "jobsite")
 public class JobSiteSpringApplication {
     public static void main(String[] args) {
