@@ -37,4 +37,6 @@ class DefaultDataSourceConfig implements DataSourceConfig {
         dataSource.setPassword(password);
         return dataSource;
     }
+}taSource;
+    }
 }
