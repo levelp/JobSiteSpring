@@ -1,3 +1,4 @@
+
 package jobsite.config;
 
 import javax.sql.DataSource;
@@ -36,7 +37,5 @@ class DefaultDataSourceConfig implements DataSourceConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;
-    }
-}taSource;
     }
 }
