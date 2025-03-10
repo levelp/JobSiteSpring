@@ -7,14 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Configuration
 @Profile("default")
 public class DefaultDataSourceConfig implements DataSourceConfig {
-
-    private static final Logger logger = LoggerFactory.getLogger(DefaultDataSourceConfig.class);
 
     @Value("${spring.datasource.url:jdbc:h2:mem:jobsite}")
     private String url;
@@ -25,11 +21,14 @@ public class DefaultDataSourceConfig implements DataSourceConfig {
     @Value("${spring.datasource.password:}")
     private String password;
 
+    @Value("${spring.datasource.driver-class-name:org.h2.Driver}")
+    private String driverClassName;
+
     @Override
     @Bean
     public DataSource dataSource() {
-        logger.info("Configuring default datasource");
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
