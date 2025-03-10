@@ -16,6 +16,30 @@ public class DefaultDataSourceConfig implements DataSourceConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(DefaultDataSourceConfig.class);
 
+    @Value("${spring.datasource.url:jdbc:postgresql://localhost:5432/jobsite}")
+    private String url;
+
+    @Value("${spring.datasource.username:postgres}")
+    private String username;
+
+    @Value("${spring.datasource.password:postgres}")
+    private String password;
+
+    @Override
+    @Bean
+    public DataSource dataSource() {
+        logger.info("Configuring default PostgreSQL datasource");
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        return dataSource;
+    }
+public class DefaultDataSourceConfig implements DataSourceConfig {
+
+    private static final Logger logger = LoggerFactory.getLogger(DefaultDataSourceConfig.class);
+
     @Value("${spring.datasource.driver-class-name:org.postgresql.Driver}")
     private String driver;
 
