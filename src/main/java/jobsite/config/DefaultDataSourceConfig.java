@@ -7,10 +7,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Configuration
 @Profile("default")
 public class DefaultDataSourceConfig implements DataSourceConfig {
+
+    private static final Logger logger = LoggerFactory.getLogger(DefaultDataSourceConfig.class);
 
     @Value("${spring.datasource.driver-class-name:org.postgresql.Driver}")
     private String driver;
@@ -27,6 +31,8 @@ public class DefaultDataSourceConfig implements DataSourceConfig {
     @Override
     @Bean
     public DataSource dataSource() {
+        logger.info("Configuring PostgreSQL DataSource with URL: {}", url);
+        
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driver);
         dataSource.setUrl(url);
@@ -34,10 +40,12 @@ public class DefaultDataSourceConfig implements DataSourceConfig {
         // Используем учетные данные, только если они предоставлены
         if (username != null && !username.isEmpty()) {
             dataSource.setUsername(username);
+            logger.debug("Using provided username");
         }
         
         if (password != null && !password.isEmpty()) {
             dataSource.setPassword(password);
+            logger.debug("Using provided password");
         }
         
         return dataSource;
