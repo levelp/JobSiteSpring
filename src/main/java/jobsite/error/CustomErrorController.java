@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.text.MessageFormat;
 
 @Controller
-class CustomErrorController {
+public class CustomErrorController {
 
     /**
      * Display an error page, as defined in web.xml <code>custom-error</code> element.
