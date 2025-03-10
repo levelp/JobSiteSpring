@@ -12,16 +12,16 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Profile("default")
 public class DefaultDataSourceConfig implements DataSourceConfig {
 
-    @Value("${dataSource.driverClassName:org.postgresql.Driver}")
+    @Value("${spring.datasource.driver-class-name:org.postgresql.Driver}")
     private String driver;
 
-    @Value("${dataSource.url:jdbc:postgresql://localhost:5432/jobsite}")
+    @Value("${spring.datasource.url}")
     private String url;
 
-    @Value("${dataSource.username:postgres}")
+    @Value("${spring.datasource.username:#{null}}")
     private String username;
 
-    @Value("${dataSource.password:postgres}")
+    @Value("${spring.datasource.password:#{null}}")
     private String password;
 
     @Override
