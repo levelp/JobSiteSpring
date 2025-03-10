@@ -3,7 +3,7 @@ package jobsite.config;
 
 import org.springframework.context.annotation.Configuration;
 
-import jakarta.sql.DataSource;
+import javax.sql.DataSource;
 
 @Configuration
 public interface DataSourceConfig {
