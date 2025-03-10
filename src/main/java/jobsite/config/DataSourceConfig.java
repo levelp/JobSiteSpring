@@ -8,10 +8,3 @@ import org.springframework.context.annotation.Configuration;
 public interface DataSourceConfig {
     DataSource dataSource();
 }
-package jobsite.config;
-
-import javax.sql.DataSource;
-
-public interface DataSourceConfig {
-    DataSource dataSource();
-}
