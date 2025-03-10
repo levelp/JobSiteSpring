@@ -8,10 +8,18 @@ channel = "stable-24_05"
 run = ["sh", "-c", "mvn spring-boot:run"]
 
 [workflows]
-runButton = "Run Spring Boot App"
+runButton = "Run"
 
 [[workflows.workflow]]
 name = "Run Spring Boot App"
+author = 34999332
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "mvn spring-boot:run"
+
+[[workflows.workflow]]
+name = "Run"
 author = 34999332
 
 [[workflows.workflow.tasks]]
