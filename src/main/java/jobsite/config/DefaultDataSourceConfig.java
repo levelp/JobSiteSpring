@@ -30,8 +30,16 @@ public class DefaultDataSourceConfig implements DataSourceConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driver);
         dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
+        
+        // Используем учетные данные, только если они предоставлены
+        if (username != null && !username.isEmpty()) {
+            dataSource.setUsername(username);
+        }
+        
+        if (password != null && !password.isEmpty()) {
+            dataSource.setPassword(password);
+        }
+        
         return dataSource;
     }
 }
