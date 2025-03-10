@@ -1,3 +1,4 @@
+
 package jobsite.config;
 
 import org.springframework.context.annotation.Bean;
@@ -19,18 +20,25 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests((requests) -> requests
+            .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/", "/home", "/css/**", "/js/**", "/images/**", "/h2-console/**").permitAll()
                 .anyRequest().authenticated()
             )
-            .formLogin((form) -> form
+            .formLogin(form -> form
                 .loginPage("/login")
+                .defaultSuccessUrl("/")
                 .permitAll()
             )
-            .logout((logout) -> logout.permitAll())
-            .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
-            .headers(headers -> headers.frameOptions().sameOrigin());
-
+            .logout(logout -> logout
+                .permitAll()
+            )
+            .csrf(csrf -> csrf
+                .disable()
+            )
+            .headers(headers -> headers
+                .frameOptions(frameOptions -> frameOptions.disable())
+            );
+        
         return http.build();
     }
 
@@ -41,16 +49,16 @@ public class SecurityConfig {
             .password(passwordEncoder().encode("password"))
             .roles("USER")
             .build();
-
+        
         UserDetails admin = User.builder()
             .username("admin")
             .password(passwordEncoder().encode("admin"))
-            .roles("ADMIN", "USER")
+            .roles("ADMIN")
             .build();
-
+        
         return new InMemoryUserDetailsManager(user, admin);
     }
-
+    
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
