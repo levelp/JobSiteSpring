@@ -1,8 +1,10 @@
+
 package jobsite.account;
 
-import jakarta.annotation.PostConstruct;
+import java.util.Collections;
 
-import jobsite.model.Account;
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,8 +15,11 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import java.util.Collections;
+import org.springframework.stereotype.Service;
 
+import jobsite.model.Account;
+
+@Service
 public class UserService implements UserDetailsService {
 
     @Autowired
@@ -50,5 +55,4 @@ public class UserService implements UserDetailsService {
     private GrantedAuthority createAuthority(Account account) {
         return new SimpleGrantedAuthority(account.getRole());
     }
-
 }
