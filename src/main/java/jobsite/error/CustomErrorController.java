@@ -1,3 +1,4 @@
+
 package jobsite.error;
 
 import com.google.common.base.Throwables;
