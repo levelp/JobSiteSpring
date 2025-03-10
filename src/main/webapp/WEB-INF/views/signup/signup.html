@@ -11,26 +11,8 @@
 </head>
 <body>
 <form class="form-narrow form-horizontal" method="post" th:action="@{/signup}" th:object="${signupForm}">
-    <!-- /* Show general error message when form contains errors */ -->
-    <th:block th:if="${#fields.hasErrors('${signupForm.*}')}">
-        <div th:replace="fragments/alert :: alert (type='danger', message='Form contains errors. Please try again.')">
-            Alert
-        </div>
-    </th:block>
     <fieldset>
-        <legend>Регистрация на сайте</legend>
-
-        <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-error'">
-            <label for="email" class="col-lg-2 control-label">ФИО</label>
-
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="name" placeholder="Enter you name"
-                       th:field="*{name}"/>
-                <span class="help-block" th:if="${#fields.hasErrors('name')}"
-                      th:errors="*{name}">Имя не может быть пустым</span>
-            </div>
-        </div>
-
+        <legend>Please Sign Up</legend>
         <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
             <label for="email" class="col-lg-2 control-label">Email</label>
 
