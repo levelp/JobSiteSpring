@@ -1,1 +1,1 @@
-call mvn build
+call mvn test
