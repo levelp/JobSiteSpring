@@ -1,4 +1,4 @@
 git add .
-git pull
 git commit -am"JobSiteSpring"
+git pull
 git push
