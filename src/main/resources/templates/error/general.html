@@ -16,3 +16,15 @@
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <h1>Error</h1>
+    <p th:text="${errorMessage}">Error message will be displayed here</p>
+    <a href="/">Go to home page</a>
+</body>
+</html>

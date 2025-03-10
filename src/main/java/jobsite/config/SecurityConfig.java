@@ -1,3 +1,4 @@
+
 package jobsite.config;
 
 import org.springframework.context.annotation.Bean;
@@ -18,29 +19,37 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(requests -> requests
-                .requestMatchers("/resources/**", "/signup", "/about").permitAll()
+            .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/", "/resources/**", "/h2-console/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/login")
                 .permitAll()
+            )
+            .logout(logout -> logout
+                .permitAll()
             );
-
+            
+        // For H2 console access
+        http.csrf(csrf -> csrf.disable());
+        http.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()));
+        
         return http.build();
+    }
+
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService() {
+        UserDetails user = User.builder()
+            .username("user")
+            .password(passwordEncoder().encode("password"))
+            .roles("USER")
+            .build();
+        return new InMemoryUserDetailsManager(user);
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.withUsername("user")
-            .password(passwordEncoder().encode("password"))
-            .roles("USER")
-            .build();
-        return new InMemoryUserDetailsManager(user);
     }
 }
