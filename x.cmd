@@ -1,3 +1,4 @@
 git add .
-git commit --amend -m"JobSiteSpring"
-git push origin --force
+git pull
+git commit -am"JobSiteSpring"
+git push
