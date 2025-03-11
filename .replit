@@ -1,4 +1,4 @@
-modules = ["java-graalvm22.3", "web"]
+modules = ["java-graalvm22.3", "web", "python-3.12"]
 run = "mvn spring-boot:run"
 
 [nix]
