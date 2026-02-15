@@ -1,8 +1,8 @@
 package jobsite.account;
 
 import jobsite.config.WebSecurityConfigurationAware;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.test.web.servlet.MvcResult;
@@ -31,7 +31,7 @@ public class UserAuthenticationIntegrationTest extends WebSecurityConfigurationA
             public void match(MvcResult mvcResult) throws Exception {
                 Object session = mvcResult.getRequest().getSession();
                 SecurityContext securityContext = (SecurityContext) ((jakarta.servlet.http.HttpSession)session).getAttribute(SEC_CONTEXT_ATTR);
-                org.junit.jupiter.api.Assertions.assertEquals(username, securityContext.getAuthentication().getName());
+                Assertions.assertEquals(username, securityContext.getAuthentication().getName());
             }
         };
         mockMvc.perform(post("/j_spring_security_check").param("j_username", username).param("j_password", "demo"))
@@ -48,7 +48,7 @@ public class UserAuthenticationIntegrationTest extends WebSecurityConfigurationA
                     public void match(MvcResult mvcResult) throws Exception {
                         jakarta.servlet.http.HttpSession session = mvcResult.getRequest().getSession();
                         SecurityContext securityContext = (SecurityContext) session.getAttribute(SEC_CONTEXT_ATTR);
-                        org.junit.Assert.assertNull(securityContext);
+                        Assertions.assertNull(securityContext);
                     }
                 });
     }

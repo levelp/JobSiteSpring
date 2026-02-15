@@ -1,6 +1,6 @@
 package jobsite.config;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.security.web.FilterChainProxy;
 
 import jakarta.inject.Inject;
@@ -12,8 +12,8 @@ public abstract class WebSecurityConfigurationAware extends WebAppConfigurationA
     @Inject
     private FilterChainProxy springSecurityFilterChain;
 
-    @Before
-    public void before() {
+    @BeforeEach
+    public void beforeEach() {
         this.mockMvc = webAppContextSetup(this.wac)
                 .addFilters(this.springSecurityFilterChain).build();
     }

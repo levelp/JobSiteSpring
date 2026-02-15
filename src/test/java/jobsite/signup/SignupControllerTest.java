@@ -1,7 +1,7 @@
 package jobsite.signup;
 
 import jobsite.config.WebAppConfigurationAware;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
