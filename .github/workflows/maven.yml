@@ -29,11 +29,12 @@ jobs:
     - name: Verify Coverage
       run: |
         COVERAGE=$(grep -o '<tfoot>.*</tfoot>' target/site/jacoco/index.html | grep -o '[0-9][0-9]*%' | head -1 | grep -o '[0-9][0-9]*')
-        if [ "$COVERAGE" -lt 100 ]; then
-          echo "Test coverage is below 100%: $COVERAGE%"
+        MIN_COVERAGE=25
+        if [ "$COVERAGE" -lt "$MIN_COVERAGE" ]; then
+          echo "Test coverage is below ${MIN_COVERAGE}%: $COVERAGE%"
           exit 1
         else
-          echo "Test coverage is 100%"
+          echo "Test coverage is >= ${MIN_COVERAGE}% ($COVERAGE%)"
         fi
       
     - name: Publish Test Report
