@@ -1,4 +1,3 @@
-
 package jobsite;
 
 import org.springframework.boot.SpringApplication;
@@ -10,9 +9,10 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 @ComponentScan(basePackages = "jobsite")
-@EntityScan(basePackages = "jobsite.domain")
-@EnableJpaRepositories(basePackages = "jobsite.repository")
-@EnableMongoRepositories(basePackages = "jobsite.repository.mongo")
+// Keep scanning broad to pick up entities/repositories across the project.
+@EntityScan(basePackages = "jobsite")
+@EnableJpaRepositories(basePackages = "jobsite")
+@EnableMongoRepositories(basePackages = "jobsite")
 public class JobSiteSpringApplication {
     public static void main(String[] args) {
         SpringApplication.run(JobSiteSpringApplication.class, args);
