@@ -15,18 +15,28 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                    .requestMatchers("/", "/home", "/resources/**").permitAll()
+                    .requestMatchers(
+                        "/",
+                        "/home",
+                        "/about",
+                        "/signup",
+                        "/signin",
+                        "/resources/**"
+                    ).permitAll()
                     .anyRequest().authenticated()
             )
             .formLogin(formLogin ->
                 formLogin
-                    .loginPage("/login")
+                    .loginPage("/signin")
+                    // Legacy URL/parameter names expected by tests.
+                    .loginProcessingUrl("/j_spring_security_check")
+                    .usernameParameter("j_username")
+                    .passwordParameter("j_password")
+                    .defaultSuccessUrl("/", true)
+                    .failureUrl("/signin?error=1")
                     .permitAll()
             )
-            .logout(logout ->
-                logout
-                    .permitAll()
-            );
+            .logout(logout -> logout.permitAll());
 
         return http.build();
     }
