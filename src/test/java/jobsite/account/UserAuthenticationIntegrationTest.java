@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 
 import jakarta.servlet.http.HttpSession;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
@@ -34,7 +35,7 @@ public class UserAuthenticationIntegrationTest extends WebSecurityConfigurationA
                 Assertions.assertEquals(username, securityContext.getAuthentication().getName());
             }
         };
-        mockMvc.perform(post("/j_spring_security_check").param("j_username", username).param("j_password", "demo"))
+        mockMvc.perform(post("/j_spring_security_check").with(csrf()).param("j_username", username).param("j_password", "demo"))
                 .andExpect(redirectedUrl("/"))
                 .andExpect(matcher);
     }
@@ -42,7 +43,7 @@ public class UserAuthenticationIntegrationTest extends WebSecurityConfigurationA
     @Test
     public void userAuthenticationFails() throws Exception {
         final String username = "user";
-        mockMvc.perform(post("/j_spring_security_check").param("j_username", username).param("j_password", "invalid"))
+        mockMvc.perform(post("/j_spring_security_check").with(csrf()).param("j_username", username).param("j_password", "invalid"))
                 .andExpect(redirectedUrl("/signin?error=1"))
                 .andExpect(new ResultMatcher() {
                     public void match(MvcResult mvcResult) throws Exception {
