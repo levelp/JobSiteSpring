@@ -4,9 +4,7 @@ package jobsite.service;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
-@Service
+// NOTE: This class is a placeholder and is not registered as a Spring bean.
 public class UserService implements UserDetailsService {
 
     @Override
